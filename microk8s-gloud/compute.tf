@@ -3,7 +3,7 @@ resource "random_id" "instance_id" {
 }
 
 resource "google_compute_instance" "microk8s" {
-    name         = "flask-vm-${random_id.instance_id.hex}"
+    name         = "microk8s-vm-${random_id.instance_id.hex}"
     machine_type = "n1-standard-1"
     zone         = "europe-west3-a"
 
@@ -13,13 +13,18 @@ resource "google_compute_instance" "microk8s" {
         }
     }
 
-    metadata_startup_script = "sudo snap install microk8s --classic --channel=1.16/stable; microk8s.enable dns dashboard ingress"
+    metadata_startup_script = "sudo snap install microk8s --classic --channel=1.16/stable; microk8s.enable dns registry dashboard ingress"
 
     network_interface {
         network = "default"
 
         access_config {
             // Include this section to give the VM an external ip address
+
         }
+    }
+
+    metadata = {
+        ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
     }
 }
