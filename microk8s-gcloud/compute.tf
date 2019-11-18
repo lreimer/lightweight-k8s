@@ -13,7 +13,7 @@ resource "google_compute_instance" "microk8s" {
         }
     }
 
-    metadata_startup_script = "sudo snap install microk8s --classic --channel=1.16/stable; microk8s.enable dns registry dashboard ingress"
+    metadata_startup_script = "sudo snap install microk8s --classic --channel=1.16/stable; sudo usermod -a -G microk8s ubuntu; sudo microk8s.enable dns registry dashboard ingress; sudo microk8s.start"
 
     network_interface {
         network = "default"
