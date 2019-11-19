@@ -45,6 +45,52 @@ $ microk8s.kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-s
 $ microk8s.kubectl get pods
 ```
 
+## K3s Demo on GCP
+
+
+## K3s Demo on NUC Cloudkoffer
+
+The official installation is already pretty straight forward and simple to follow.
+Issue the following commands in a terminal on the `k3s-master` NUC. Make sure you
+have followed the setup instructions so that you can SSH login to all minion NUCs.
+
+```
+$ sudo curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644 --no-deploy traefik" sh -
+$ sudo cat /var/lib/rancher/k3s/server/node-token
+
+$ ssh k3s-minion-1
+$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
+
+$ ssh k3s-minion-2
+$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
+
+$ ssh k3s-minion-3
+$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
+
+$ ssh k3s-minion-4
+$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
+
+# To remove K3s use the uninstall script
+$ sudo k3s-uninstall.sh
+```
+
+The second option is to use `k3sup` by Alex Ellis. The installation can be performed remotely
+from my Mac being connected to the Cloudkoffer LAN.
+
+```
+$ curl -sLS https://get.k3sup.dev | sh
+$ sudo install k3sup /usr/local/bin/
+$ k3sup --help
+
+$ export SERVER_IP=192.168.178.10
+$ k3sup install --ip $SERVER_IP --user k3s --k3s-extra-args '--write-kubeconfig-mode 644 --no-deploy traefik'
+
+$ k3sup join --ip 192.168.178.20 --server-ip $SERVER_IP --user k3s
+$ k3sup join --ip 192.168.178.30 --server-ip $SERVER_IP --user k3s
+$ k3sup join --ip 192.168.178.40 --server-ip $SERVER_IP --user k3s
+$ k3sup join --ip 192.168.178.50 --server-ip $SERVER_IP --user k3s
+```
+
 ## Maintainer
 
 M.-Leander Reimer (@lreimer), <mario-leander.reimer@qaware.de>
