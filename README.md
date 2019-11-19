@@ -103,12 +103,15 @@ $ sudo install k3sup /usr/local/bin/
 $ k3sup --help
 
 $ export SERVER_IP=192.168.178.10
-$ k3sup install --ip $SERVER_IP --user k3s --k3s-extra-args '--write-kubeconfig-mode 644' --local-path ~/.kube/config --merge --context cloudkoffer
+$ k3sup install --ip $SERVER_IP --user root --k3s-extra-args '--write-kubeconfig-mode 644' --local-path ~/.kube/config --merge --context k3skoffer
 
-$ k3sup join --ip 192.168.178.20 --server-ip $SERVER_IP --user k3s
-$ k3sup join --ip 192.168.178.30 --server-ip $SERVER_IP --user k3s
-$ k3sup join --ip 192.168.178.40 --server-ip $SERVER_IP --user k3s
-$ k3sup join --ip 192.168.178.50 --server-ip $SERVER_IP --user k3s
+$ k3sup install --ip $SERVER_IP --user root --k3s-extra-args '--write-kubeconfig-mode 644' --local-path ~/.kube/k3skoffer
+$ export KUBECONFIG=~/.kube/k3skoffer
+
+$ k3sup join --ip 192.168.178.20 --server-ip $SERVER_IP --user root
+$ k3sup join --ip 192.168.178.30 --server-ip $SERVER_IP --user root
+$ k3sup join --ip 192.168.178.40 --server-ip $SERVER_IP --user root
+$ k3sup join --ip 192.168.178.50 --server-ip $SERVER_IP --user root
 ```
 
 ## Maintainer
