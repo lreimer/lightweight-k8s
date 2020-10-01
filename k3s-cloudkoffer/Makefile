@@ -13,6 +13,6 @@ k3s:
 	k3sup join --ip 192.168.178.40 --server-ip $(MASTER_IP) --user root
 	k3sup join --ip 192.168.178.50 --server-ip $(MASTER_IP) --user root
 	@echo ""
-	export KUBECONFIG=`pwd`/kubeconfig
-	kubectl get nodes
+	@echo "export KUBECONFIG=`pwd`/kubeconfig"
+	KUBECONFIG=`pwd`/kubeconfig kubectl get nodes
 	
