@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "k3s-https" {
     name    = "k3s-https"
-    network = "${data.google_compute_network.default.name}"
+    network = data.google_compute_network.default.name
 
     allow {
         protocol = "tcp"
@@ -10,7 +10,7 @@ resource "google_compute_firewall" "k3s-https" {
 
 resource "google_compute_firewall" "k3s-http" {
     name    = "k3s-http"
-    network = "${data.google_compute_network.default.name}"
+    network = data.google_compute_network.default.name
 
     allow {
         protocol = "tcp"

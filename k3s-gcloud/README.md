@@ -14,5 +14,6 @@ $ k3sup install --ip $SERVER_IP --user ubuntu --k3s-extra-args '--write-kubeconf
 $ export KUBECONFIG=`pwd`/kubeconfig
 $ kubectl get node
 
-$ k3sup join --ip $NODE_IP --server-ip $SERVER_IP --user ubuntu
+$ k3sup join --ip $NODE_IP --server-ip $SERVER_IP --user ubuntu#
+$ kubectl get node
 ```
