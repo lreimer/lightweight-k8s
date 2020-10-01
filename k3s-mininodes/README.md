@@ -1,4 +1,4 @@
-# K3s on miniNodes Raspberry Pi CoM3
+# K3s Demo on miniNodes Raspberry Pi CoM3
 
 ## Mininodes Cluster Installation
 

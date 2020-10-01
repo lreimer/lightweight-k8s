@@ -1,4 +1,4 @@
-# K3s on NUC Cloudkoffer
+# K3s Demo on NUC Cloudkoffer
 
 ## Cloudkoffer Installation
 
