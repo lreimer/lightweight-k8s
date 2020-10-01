@@ -34,6 +34,24 @@ systemctl disable firewalld
 ```
 Make sure you have the package `policycoreutils-python` installed. It is required for k3s.
 
+If you have problems with SELinux, either install the required dependencies
+or disable it altogether.
+
+```
+$ yum clean all
+$ yum update
+
+$ yum install -y container-selinux selinux-policy-base
+$ yum install -y https://rpm.rancher.io/k3s-selinux-0.1.1-rc1.el7.noarch.rpm
+
+$ sestatus
+$ sudo nano /etc/selinux/config
+
+# change to SELINUX=disabled
+
+$ sudo reboot
+```
+
 ## Official K3s Installation
 
 The official installation is already pretty straight forward and simple to follow: https://rancher.com/docs/k3s/latest/en/quick-start/
