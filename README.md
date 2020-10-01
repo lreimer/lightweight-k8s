@@ -64,56 +64,6 @@ $ kubectl get node
 $ k3sup join --ip $NODE_IP --server-ip $SERVER_IP --user ubuntu
 ```
 
-## K3s Demo on NUC Cloudkoffer
-
-The official installation is already pretty straight forward and simple to follow.
-Issue the following commands in a terminal on the `k3s-master` NUC. Make sure you
-have followed the setup instructions so that you can SSH login to all minion NUCs.
-
-```
-$ sudo curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" sh -
-$ sudo cat /var/lib/rancher/k3s/server/node-token
-
-$ ssh k3s-minion-1
-$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
-
-$ ssh k3s-minion-2
-$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
-
-$ ssh k3s-minion-3
-$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
-
-$ ssh k3s-minion-4
-$ sudo curl -sfL https://get.k3s.io | K3S_URL=https://k3s-master:6443 K3S_TOKEN=<NODE_TOKEN> sh -
-
-# To remove K3s use the uninstall script
-$ k3s-killall.sh
-$ k3s-uninstall.sh
-
-$ k3s-killall.sh
-$ k3s-agent-uninstall.sh
-```
-
-The second option is to use `k3sup` by Alex Ellis. The installation can be performed remotely,
-e.g. from my Mac being directly connected to the Cloudkoffer LAN.
-
-```
-$ curl -sLS https://get.k3sup.dev | sh
-$ sudo install k3sup /usr/local/bin/
-$ k3sup --help
-
-$ export SERVER_IP=192.168.178.10
-$ k3sup install --ip $SERVER_IP --user root --k3s-extra-args '--write-kubeconfig-mode 644' --local-path ~/.kube/config --merge --context k3skoffer
-
-$ k3sup install --ip $SERVER_IP --user root --k3s-extra-args '--write-kubeconfig-mode 644' --local-path ~/.kube/k3skoffer
-$ export KUBECONFIG=~/.kube/k3skoffer
-
-$ k3sup join --ip 192.168.178.20 --server-ip $SERVER_IP --user root
-$ k3sup join --ip 192.168.178.30 --server-ip $SERVER_IP --user root
-$ k3sup join --ip 192.168.178.40 --server-ip $SERVER_IP --user root
-$ k3sup join --ip 192.168.178.50 --server-ip $SERVER_IP --user root
-```
-
 ## Maintainer
 
 M.-Leander Reimer (@lreimer), <mario-leander.reimer@qaware.de>
