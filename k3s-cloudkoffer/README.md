@@ -1,4 +1,4 @@
-# K3s Demo on NUC Cloudkoffer
+# K3s on NUC Cloudkoffer
 
 ## Cloudkoffer Installation
 
@@ -64,7 +64,7 @@ $ k3s-killall.sh
 $ k3s-agent-uninstall.sh
 ```
 
-## K3s Installation using K3sup
+## K3s Installation using k3sup
 
 The second option is to use `k3sup` by Alex Ellis. The installation can be performed remotely, e.g. from my Mac being directly connected to the Cloudkoffer LAN.
 
