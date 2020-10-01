@@ -19,7 +19,7 @@ For each of the 5 Raspi CoM cards repeat the following steps:
   - enable predictable network interfaces names
   - expand filesystem
   - change memory split for graphics card to 16MB
-- Enable legacy iptables, following these instructions https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster
+- Enable legacy iptables following these instructions https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster
 - Reboot
 
 ## K3s Installation using k3sup
