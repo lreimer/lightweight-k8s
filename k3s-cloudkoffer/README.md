@@ -59,6 +59,7 @@ The official installation is already pretty straight forward and simple to follo
 Issue the following commands in a terminal on the `k3s-master` NUC. Make sure you have followed the setup instructions so that you can SSH login to all minion NUCs.
 
 ```
+$ ssh k3s-master
 $ sudo curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--write-kubeconfig-mode 644" sh -
 $ sudo cat /var/lib/rancher/k3s/server/node-token
 
