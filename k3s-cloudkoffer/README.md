@@ -93,12 +93,12 @@ $ sudo install k3sup /usr/local/bin/
 $ k3sup --help
 
 $ export MASTER_IP=192.168.178.10
-$ k3sup install --ip $MASTER_IP --user root --k3s-extra-args '--write-kubeconfig-mode 644 --disable traefik --no-deploy traefik' --context cloudkoffer
+$ k3sup install --ip $MASTER_IP --user root --k3s-extra-args '--write-kubeconfig-mode 644 --disable traefik --no-deploy traefik --node-label arch=x86_64' --context cloudkoffer
 
 $ export KUBECONFIG=`pwd`/kubeconfig
 
-$ k3sup join --ip 192.168.178.20 --server-ip $MASTER_IP --user root
-$ k3sup join --ip 192.168.178.30 --server-ip $MASTER_IP --user root
-$ k3sup join --ip 192.168.178.40 --server-ip $MASTER_IP --user root
-$ k3sup join --ip 192.168.178.50 --server-ip $MASTER_IP --user root
+$ k3sup join --ip 192.168.178.20 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
+$ k3sup join --ip 192.168.178.30 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
+$ k3sup join --ip 192.168.178.40 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
+$ k3sup join --ip 192.168.178.50 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
 ```
