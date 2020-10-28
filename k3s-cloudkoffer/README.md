@@ -101,4 +101,6 @@ $ k3sup join --ip 192.168.178.20 --server-ip $MASTER_IP --user root --k3s-extra-
 $ k3sup join --ip 192.168.178.30 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
 $ k3sup join --ip 192.168.178.40 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
 $ k3sup join --ip 192.168.178.50 --server-ip $MASTER_IP --user root --k3s-extra-args '--node-label arch=x86_64'
+
+$ kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
 ```
