@@ -16,5 +16,7 @@ $ microk8s config > kubeconfig
 $ export KUBECONFIG=`pwd`/kubeconfig
 $ kubectl get all --all-namespaces
 
+$ kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+
 $ microk8s stop
 ```
