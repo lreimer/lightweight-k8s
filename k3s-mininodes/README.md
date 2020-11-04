@@ -25,15 +25,15 @@ For each of the 5 Raspi CoM cards repeat the following steps:
 ## K3s Installation using k3sup
 
 ```bash
-$ k3sup install --ip 192.168.178.5 --k3s-extra-args '--write-kubeconfig-mode 644 --disable traefik --no-deploy traefik --node-label arch=armv7l' --user pi --context mininodes
+$ k3sup install --ip 192.168.178.5 --k3s-channel stable --k3s-extra-args '--write-kubeconfig-mode 644 --disable traefik --no-deploy traefik --node-label arch=armv7l' --user pi --context mininodes
 
 $ export KUBECONFIG=`pwd`/kubeconfig
 
 # for each of the other nodes
-$ k3sup join --ip 192.168.178.6 --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
-$ k3sup join --ip 192.168.178.7 --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
-$ k3sup join --ip 192.168.178.8 --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
-$ k3sup join --ip 192.168.178.9 --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
+$ k3sup join --ip 192.168.178.6 --k3s-channel stable --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
+$ k3sup join --ip 192.168.178.7 --k3s-channel stable --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
+$ k3sup join --ip 192.168.178.8 --k3s-channel stable --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
+$ k3sup join --ip 192.168.178.9 --k3s-channel stable --server-ip 192.168.178.5 --user pi --k3s-extra-args '--node-label arch=armv7l'
 ```
 
 ## Install Kubernetes Dashboard
